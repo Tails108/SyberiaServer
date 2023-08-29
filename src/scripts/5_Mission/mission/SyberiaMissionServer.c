@@ -50,7 +50,6 @@ modded class MissionServer
 				player.m_charProfile.m_skills.m_dirty = true;
 				GetSyberiaOptions().SendClientOptions(identity, player.m_charProfile);
 				PluginLogicPDA.Cast(GetPlugin(PluginLogicPDA)).SendPdaUserState(identity, player.m_charProfile);
-				PluginZones.Cast(GetPlugin(PluginZones)).SendToxicZonesToPlayer(identity);
 				PluginRecipesManager.Cast(GetPlugin(PluginRecipesManager)).SendCraftingSettings(identity);
 			}
 		}
@@ -568,12 +567,6 @@ modded class MissionServer
 	{
 		super.OnMissionStart();
 
-		PluginTrader traderPlugin = PluginTrader.Cast(GetPlugin(PluginTrader));
-		if (traderPlugin)
-		{
-			traderPlugin.InitializeTraders();
-		}
-		
 		PluginBuildingSystem buildingPlugin = PluginBuildingSystem.Cast(GetPlugin(PluginBuildingSystem));
 		if (buildingPlugin)
 		{

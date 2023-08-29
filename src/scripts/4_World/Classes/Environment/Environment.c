@@ -158,6 +158,7 @@ modded class Environment
 
 		pHeatComfort = ( pHeatComfort / pBodyPartIds.Count() ) * pCoef;
 		pHeat = ( pHeat / pBodyPartIds.Count() ) * pCoef;
+		//pHeat -= GameConstants.TEMPERATURE_ITEMS_HEAT_IN_INVENTORY_FROM_BODY;
 		pHeat += m_Player.GetPerkFloatValue(SyberiaPerkType.SYBPERK_SURVIVAL_FROST_RESIST, 0, 0) * GetSyberiaConfig().m_additionalTemperatureResistForSurvivalSkill;
 	}
 	
@@ -166,8 +167,14 @@ modded class Environment
 		if (item.IsTemperatureVisible())
 		{
 			float itemTemperature = item.GetTemperature();
-			if (itemTemperature > envTemperature) item.AddTemperature( GameConstants.TEMPERATURE_ITEM_HEAT_TRANSFER_COEF * -1.0 );
-			else item.AddTemperature( GameConstants.TEMPERATURE_ITEM_HEAT_TRANSFER_COEF );
+			if (itemTemperature > envTemperature) 
+			{			
+				item.AddTemperature( Math.Max( GameConstants.ENVIRO_TICK_RATE * GameConstants.TEMPERATURE_ITEM_HEAT_TRANSFER_COEF * -1.0, envTemperature - itemTemperature ));
+			}					
+			else if (itemTemperature < envTemperature) 
+			{
+				item.AddTemperature( Math.Min( GameConstants.ENVIRO_TICK_RATE * GameConstants.TEMPERATURE_ITEM_HEAT_TRANSFER_COEF, envTemperature - itemTemperature ));
+			}
 		}
 		
 		if (!item.GetInventory())

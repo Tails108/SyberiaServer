@@ -2,12 +2,10 @@ modded class AnimalBase
 {		
 	void DoSkinning(PlayerBase butcher, ItemBase item)
 	{
-		if (GetInventory().IsInventoryUnlocked())
+		if (m_alreadySkinned)
 			return;
 		
-		GetInventory().UnlockInventory(HIDE_INV_FROM_SCRIPT);
-		
-		m_allowCargoManipulation = true;
+		vector body_pos = GetPosition();
 		
 		ItemBase added_item;
 		float meatCountMod = butcher.GetPerkFloatValue(SyberiaPerkType.SYBPERK_HUNTING_MEAT_COUNT, 0, 0);
@@ -24,7 +22,10 @@ modded class AnimalBase
 			if (GetGame().ConfigGetChildName(skinningCfg, childId, skinningChildName))
 			{
 				itemName = GetGame().ConfigGetTextOut(skinningCfg + " " + skinningChildName + " item");
-				count = GetGame().ConfigGetFloat(skinningCfg + " " + skinningChildName + " count");
+				count = GetGame().ConfigGetFloat(skinningCfg + " " + skinningChildName + " count");	
+
+				vector pos_rnd = body_pos + Vector(Math.RandomFloat01() - 0.5, 0, Math.RandomFloat01() - 0.5);
+
 				if (skinningChildName == "ObtainedSteaks")
 				{
 					if (count > 0) 
@@ -35,7 +36,7 @@ modded class AnimalBase
 						
 						while (count > 0) {
 							count = count - 1.0;
-							added_item = ItemBase.Cast(GetInventory().CreateInInventory(itemName));
+							added_item = ItemBase.Cast(GetGame().CreateObjectEx( itemName, pos_rnd, ECE_PLACE_ON_SURFACE ));
 							if (added_item) {
 								added_item.SetQuantity(Math.Round(Math.RandomFloat(quantityMin, quantityMax) * added_item.GetQuantityMax()), false);
 								added_item.InsertAgent(eAgents.SALMONELLA, 1);
@@ -53,7 +54,7 @@ modded class AnimalBase
 						
 						while (count > 0) {
 							count = count - 1.0;
-							added_item = ItemBase.Cast(GetInventory().CreateInInventory(itemName));
+							added_item = ItemBase.Cast(GetGame().CreateObjectEx( itemName, pos_rnd, ECE_PLACE_ON_SURFACE ));
 							if (added_item) {
 								added_item.SetQuantity(Math.Round(Math.RandomFloat(quantityMin, quantityMax) * added_item.GetQuantityMax()), false);
 								added_item.InsertAgent(eAgents.SALMONELLA, 1);
@@ -72,7 +73,7 @@ modded class AnimalBase
 						
 						while (count > 0) {
 							count = count - 1.0;
-							added_item = ItemBase.Cast(GetInventory().CreateInInventory(itemName));
+							added_item = ItemBase.Cast(GetGame().CreateObjectEx( itemName, pos_rnd, ECE_PLACE_ON_SURFACE ));
 							if (added_item) {
 								added_item.SetQuantity(Math.Round(Math.RandomFloat(quantityMin, quantityMax) * added_item.GetQuantityMax()), false);
 								added_item.InsertAgent(eAgents.SALMONELLA, 1);
@@ -103,7 +104,7 @@ modded class AnimalBase
 				}
 				else if (skinningChildName == "ObtainedPelt")
 				{
-					added_item = ItemBase.Cast(GetInventory().CreateInInventory(itemName));
+					added_item = ItemBase.Cast(GetGame().CreateObjectEx( itemName, pos_rnd, ECE_PLACE_ON_SURFACE ));
 					if (added_item) {
 						added_item.SetTemperature(38);
 						added_item.SetHealth01("", "", skinningMod);
@@ -113,13 +114,11 @@ modded class AnimalBase
 				{
 					while (count > 0) {
 						count = count - 1.0;
-						ItemBase.Cast(GetInventory().CreateInInventory(itemName));
+						ItemBase.Cast(GetGame().CreateObjectEx( itemName, pos_rnd, ECE_PLACE_ON_SURFACE ));
 					}
 				}
 			}
 		}
-		
-		m_allowCargoManipulation = false;
 		
 		if (this.IsInherited(Animal_GallusGallusDomesticus)) {
 			butcher.AddExperience(SyberiaSkillType.SYBSKILL_HUNTING, GetSyberiaConfig().m_skillsExpHuntingButchSmall);
@@ -132,6 +131,18 @@ modded class AnimalBase
 		}
 		else {
 			butcher.AddExperience(SyberiaSkillType.SYBSKILL_HUNTING, GetSyberiaConfig().m_skillsExpHuntingButchCommon);
+		}
+		
+		m_alreadySkinned = true;
+
+		ItemBase gloves = butcher.GetItemOnSlot("Gloves");
+		if (gloves)
+		{
+			gloves.SetCleanness(0);
+		}
+		else
+		{
+			butcher.SetBloodyHands(true);
 		}
 	}
 };

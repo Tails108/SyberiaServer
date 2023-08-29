@@ -129,6 +129,8 @@ modded class SyberiaConfig
 	float m_shockDecrementOnLowHealthAndBlood;
 	ref array<float> m_zombieHitDecreaseMind = new array<float>;
 	ref array<float> m_zombieKillDecreaseMind = new array<float>;
+	ref array<float> m_playerHitDecreaseMind = new array<float>;
+	ref array<float> m_playerKillDecreaseMind = new array<float>;
 	ref array<float> m_antidepresantMindInc = new array<float>;
 	bool m_disableLaughterSymptom;
 	
@@ -197,6 +199,8 @@ modded class SyberiaConfig
     float m_skillsExpHuntingButchBear;
 	float m_skillsExpSurvivalIgniteFireSuccess;
 	float m_skillsExpSurvivalIgniteFireFailed;
+	float m_skillsExpSurvivalCatchFish;
+	float m_skillsExpSurvivalCraftTool;
 	
 	// World system
 	bool m_isWinterMap;
@@ -334,6 +338,8 @@ modded class SyberiaConfig
 		m_shockDecrementOnLowHealthAndBlood = ConfigGetFloat("CfgSyberia MedicineSystem shockDecrementOnLowHealthAndBlood");
 		ConfigGetFloatArray("CfgSyberia MedicineSystem zombieHitDecreaseMind", m_zombieHitDecreaseMind, 2);	
 		ConfigGetFloatArray("CfgSyberia MedicineSystem zombieKillDecreaseMind", m_zombieKillDecreaseMind, 2);	
+		ConfigGetFloatArray("CfgSyberia MedicineSystem playerHitDecreaseMind", m_playerHitDecreaseMind, 2);	
+		ConfigGetFloatArray("CfgSyberia MedicineSystem playerKillDecreaseMind", m_playerKillDecreaseMind, 2);		
 		ConfigGetFloatArray("CfgSyberia MedicineSystem antidepresantMindInc", m_antidepresantMindInc, 3);
 		m_disableLaughterSymptom = ConfigGetInt("CfgSyberia MedicineSystem disableLaughterSymptom") == 1;
 		
@@ -400,10 +406,11 @@ modded class SyberiaConfig
 	    m_skillsExpHuntingButchCommon = ConfigGetFloat("CfgSyberia SkillsExperienceSystem skillsExpHuntingButchCommon");
 	    m_skillsExpHuntingButchWolf = ConfigGetFloat("CfgSyberia SkillsExperienceSystem skillsExpHuntingButchWolf");
 		m_skillsExpHuntingButchBear = ConfigGetFloat("CfgSyberia SkillsExperienceSystem skillsExpHuntingButchBear");
-		
 		m_skillsExpSurvivalIgniteFireSuccess = ConfigGetFloat("CfgSyberia SkillsExperienceSystem skillsExpSurvivalIgniteFireSuccess");
 		m_skillsExpSurvivalIgniteFireFailed = ConfigGetFloat("CfgSyberia SkillsExperienceSystem skillsExpSurvivalIgniteFireFailed");
-		
+		m_skillsExpSurvivalCatchFish = ConfigGetFloat("CfgSyberia SkillsExperienceSystem skillsExpSurvivalCatchFish");
+		m_skillsExpSurvivalCraftTool = ConfigGetFloat("CfgSyberia SkillsExperienceSystem skillsExpSurvivalCraftTool");
+
 		// World system
 		if (GetGame().ConfigIsExisting("CfgSyberia WorldSystem winterWorld")) {
 			m_isWinterMap = ConfigGetInt("CfgSyberia WorldSystem winterWorld") == 1;

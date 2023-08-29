@@ -1,5 +1,7 @@
 modded class BleedingSourcesManagerServer
 {
+	protected ref DayZPlayerMeleeFightLogic_LightHeavy	m_MeleeFightLogic;
+
 	void SetZVirus(bool value)
 	{
 		if (value)
@@ -296,24 +298,30 @@ modded class BleedingSourcesManagerServer
 			if (!blockZedDamage && Math.RandomFloat01() < GetSyberiaConfig().m_bleedingZombieHitChance)
 			{
 				zvirusInfectionChance = zvirusInfectionChance * 1.5;
-				AttemptAddBleedingSource(component);
-				if (Math.RandomFloat01() < GetSyberiaConfig().m_sepsisZombieHitChance)
+				if ( !m_MeleeFightLogic.IsInBlock() || (m_MeleeFightLogic.IsInBlock() && Math.RandomFloat01() < 0.2) )
 				{
-					SetBloodInfection(true);
+					AttemptAddBleedingSource(component);
+					if (Math.RandomFloat01() < GetSyberiaConfig().m_sepsisZombieHitChance)
+					{
+						SetBloodInfection(true);
+					}
 				}
 			}
 			else if (Math.RandomFloat01() < zedHematomaChance)
 			{
-				AddHematomaHit();
-				if (zone == "Head" && Math.RandomFloat01() < 0.3 && Math.RandomFloat01() > meleeHeadProtection)
+				if ( !m_MeleeFightLogic.IsInBlock() || (m_MeleeFightLogic.IsInBlock() && Math.RandomFloat01() < 0.1) )
 				{
-					SetConcussionHit(true, false);
-				}
-				
-				if (m_Player.IsFaceBlocked(false))
-				{
-					zvirusInfectionChance = zvirusInfectionChance * 0.5;
-				}
+					AddHematomaHit();
+					if (zone == "Head" && Math.RandomFloat01() < 0.3 && Math.RandomFloat01() > meleeHeadProtection)
+					{
+						SetConcussionHit(true, false);
+					}
+
+					if (m_Player.IsFaceBlocked(false))
+					{
+						zvirusInfectionChance = zvirusInfectionChance * 0.5;
+					}
+				}	
 			}
 			
 			if (Math.RandomFloat01() < zvirusInfectionChance)
@@ -323,12 +331,18 @@ modded class BleedingSourcesManagerServer
 			
 			if (!blockZedDamage && Math.RandomFloat01() < GetSyberiaConfig().m_bleedingKnifehitZombieChance)
 			{
-				AddKnifeHit();
+				if ( !m_MeleeFightLogic.IsInBlock() || (m_MeleeFightLogic.IsInBlock() && Math.RandomFloat01() < 0.1) )
+				{
+					AddKnifeHit();
+				}
 			}
 			
 			if (Math.RandomFloat01() < GetSyberiaConfig().m_concussionZombieHitChance && Math.RandomFloat01() > meleeHeadProtection)
 			{
-				SetConcussionHit(true, false);
+				if ( !m_MeleeFightLogic.IsInBlock() || (m_MeleeFightLogic.IsInBlock() && Math.RandomFloat01() < 0.1) )
+				{
+					SetConcussionHit(true, false);
+				}
 			}
 			
 			m_Player.AddMindDegradation( GetSyberiaConfig().m_zombieHitDecreaseMind[0], GetSyberiaConfig().m_zombieHitDecreaseMind[1] );

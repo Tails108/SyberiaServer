@@ -37,86 +37,86 @@ class CfgSyberia
     class SleepingSystem
     {
         sleepingDecPerSec = 1;
-        sleepingUnconsionEnabled = 0;
-        sleepingIncPerUnconsionBoostValue = 5;
-        sleepingIncPerUnconsionBoostTime = 30;
-        sleepingIncPerSleepingLvl1Sec = 10;
-        sleepingIncPerSleepingLvl2Sec = 20;
-        sleepingHealPerSec01 = 0.002;
+        sleepingUnconsionEnabled = 1;
+        sleepingIncPerUnconsionBoostValue = 50;
+        sleepingIncPerUnconsionBoostTime = 60;
+        sleepingIncPerSleepingLvl1Sec = 50;
+        sleepingIncPerSleepingLvl2Sec = 80;
+        sleepingHealPerSec01 = 0.01;
         sleepingHealInfluenzaChance = 0.01;
     };
     
     class MedicineSystem
     {
         sepsisStage1TimeSec = 600;
-        sepsisStage2TimeSec = 2400;
-        sepsisDeathTimeSec = 1200;
+        sepsisStage2TimeSec = 5400;
+        sepsisDeathTimeSec = 10000;
         sepsisHighTemperatureValue = 42;
         sepsisZombieHitChance = 0.01;
-        sepsisKnifeHitChance = 0.1;
-        sepsisBulletHitChance = 0.05;
-        sepsisDirtySyringeChance = 0.75;
-        zvirusStage1TimeSec = 600; // 10 min
-        zvirusStage2TimeSec = 2400; // zvirusStage1TimeSec + 40 min
-        zvirusDeathTimeSec = 1200;
-        zvirusBloodLosePerSec = 0.05;
-        zvirusHealthLosePerSec = 0.01;
-        zvirusCuthitSpawnChance = 0.003;
-        zvirusPainSpawnChance = 0.001;
-        zvirusVommitSpawnChance = 0.0002;
-        zvirusBlindnessSpawnChance = 0.01;
-        zvirusFeverblurSpawnChance = 0.01;
-        zvirusOnHitIncrementTimer = 300;
-        zvirusZombieHitChance = 0.2;
-        zvirusZombieBloodTransferChance = 0.1;
-        zvirusAntidotBloodDmg01 = 0.15;
-        zvirusAntidotHealthDmg01 = 0.2;
+        sepsisKnifeHitChance = 0.01;
+        sepsisBulletHitChance = 0.01;
+        sepsisDirtySyringeChance = 0.3;
+        zvirusStage1TimeSec = 999999999; // 10 min
+        zvirusStage2TimeSec = 999999999; // zvirusStage1TimeSec + 40 min
+        zvirusDeathTimeSec = 999999999;
+        zvirusBloodLosePerSec = 0;
+        zvirusHealthLosePerSec = 0;
+        zvirusCuthitSpawnChance = 0;
+        zvirusPainSpawnChance = 0;
+        zvirusVommitSpawnChance = 0;
+        zvirusBlindnessSpawnChance = 0;
+        zvirusFeverblurSpawnChance = 0;
+        zvirusOnHitIncrementTimer = 0;
+        zvirusZombieHitChance = 0;
+        zvirusZombieBloodTransferChance = 0;
+        zvirusAntidotBloodDmg01 = 0;
+        zvirusAntidotHealthDmg01 = 0;
         painLvl1TimeSec = 300;
         painLvl2TimeSec = 900;
         painLvl3TimeSec = 1800;
-        painMaxDurationSec = 2400;
+        painMaxDurationSec = 1200;
         bleedingBullethitHealthlosePerSecond = 0.003;
-        bleedingBullethitOpenPerSecond = 5;
+        bleedingBullethitOpenPerSecond = 0.04;
         bleedingBullethitCupd1PerSecond = 0.3;
-        bleedingBullethitCupd2PerSecond = 0.1;
-        bleedingBullethitRemoveBandagedTimeSec = -1; // DISABLED
+        bleedingBullethitCupd2PerSecond = 0.3;
+        bleedingBullethitRemoveBandagedTimeSec = 3600; // DISABLED
         bleedingKnifehitZombieChance = 0.005;
         bleedingKnifehitHealthlosePerSecond = 0.003;
         bleedingKnifehitOpenPerSecond = 6;
         bleedingKnifehitCupd1PerSecond = 0.35;
         bleedingKnifehitCupd2PerSecond = 0.1;
-        bleedingKnifehitRemoveBandagedTimeSec = 3600;
+        bleedingKnifehitRemoveBandagedTimeSec = 600;
         bleedingVisceraBloodlosePerSecond = 3;
         bleedingVisceraHealthlosePerSecond = 0.005;
         bleedingHematomaBloodlosePerSecond = 0;
         bleedingHematomaHealthlosePerSecond = 0.002;
-        bleedingZombieHitChance = 0.3;
-        hematomaPlayerhandsHitChance = 0.6;
-        hematomaZombieHitChance = 0.7;
+        bleedingZombieHitChance = 0.2;
+        hematomaPlayerhandsHitChance = 0.75;
+        hematomaZombieHitChance = 0.4;
         hematomaRegenTimerSec = 600;
         hematomaRegenTimeBoostOnSalve = 8;
-        hematomaPainChance = 0.5;
+        hematomaPainChance = 0.4;
         cuthitRegenTimerSec = 300;
         visceraKnifehitTorsoChance = 0.4;
         visceraBullethitTorsoChance = 0.3;
         concussionRegenTimeSec = 1800; //30 min
-        concussionZombieHitChance = 0.05;
-        hemostaticEffectModifier = 0.3; // 30% of total bloodlose
+        concussionZombieHitChance = 0.03;
+        hemostaticEffectModifier = 0.2; 
         hematopoiesisEffectBloodPerSec = 2;
         adrenalinEffectShockUpPerSec[] = { 0.01666, 0.03333, 0.2 };
         adrenalinEffectStaminaDepletionMod[] = { 0.5, 0.25, 0.1 };
         adrenalinEffectStaminaRecoveryMod[] = { 1.5, 2.0, 2.5 };
         overdoseDecrementPerSec = 0.001;
-        overdoseUnconChangePerSec = 0.025;
-        mindstateHealPerSec = 0.005;
-        mindstateEmptyDeadtimeSec = 600;
-        influenzaIncubatePeriodsSec[] = { 300, 1500, 1800 };
+        overdoseUnconChangePerSec = 0.05;
+        mindstateHealPerSec = 0.05;
+        mindstateEmptyDeadtimeSec = 1200;
+        influenzaIncubatePeriodsSec[] = { 120, 1500, 1800 };
         influenzaTemperatureLevels[] = { -1.0, 37.0, 40.0 };
         influenzaSympthomChance[] = { 0.02, 0.04, 0.08 };
-        influenzaDeathTime[] = {0, 0, 900};
+        influenzaDeathTime[] = {0, 0, 9000};
         influenzaApplyOnColdWarnChance = 0.001;
         influenzaApplyOnColdCritChance = 0.005;
-        antibioticsGlobalEffectivityModifier = 0.006;
+        antibioticsGlobalEffectivityModifier = 0.04;
         stomatchpoisonVomitChance[] = { 0.01, 0.02, 0.04 };
         stomatchpoisonWaterDrainFromVomit[] = { 200, 350, 500 };
         stomatchpoisonEnergyDrainFromVomit[] = { 300, 600, 1000 };
@@ -133,20 +133,22 @@ class CfgSyberia
         stomatchpoisonDrinkPond[] = { 2, 200 };
         stomatchpoisonChanceDrinkWell = 0.01;
         stomatchpoisonDrinkWell[] = { 1, 100 };
-        stomatchpoisonDefaultTimes[] = { 1800, 900, 600 }; // lvl1, lvl2, lvl3
-        startSurgeryVisceraChance = 0.15;
-        startSurgeryBulletChance = 0.3;
-        startSurgeryKnifeChance = 0.5;
+        stomatchpoisonDefaultTimes[] = {240, 120, 80};
+        startSurgeryVisceraChance = 0.05;
+        startSurgeryBulletChance = 0.5;
+        startSurgeryKnifeChance = 0.75;
         surgerySideEffectBloodLoseCount = 500;
         surgerySideEffectHealthLoseCount = 20;
-        radiationDoseDecrementPerSec[] = { -0.02, -0.08, -0.2, -0.5 };
-        radiationLevels[] = { 20, 60, 120 };
-        radiationHealthDamage[] = { 0.09, 0.2, 0.8 };
+        radiationDoseDecrementPerSec[] = { -0.04, -0.1, -0.2, -0.8 };
+        radiationLevels[] = { 20, 60, 90 };
+        radiationHealthDamage[] = { 0.09, 0.2, 0.6 };
         radiationSleepingDec = 3;
         shockDecrementOnLowHealthAndBlood = 1.5;
-        zombieHitDecreaseMind[] = { 0.4, 5 }; // amount, time
-        zombieKillDecreaseMind[] = { 0.2, 10 }; // amount, time
-        antidepresantMindInc[] = { 0.1, 0.25, 0.5 };
+        zombieHitDecreaseMind[] = { 0.13, 5 }; // amount, time
+        zombieKillDecreaseMind[] = { 0.13, 10 }; // amount, time
+		playerHitDecreaseMind[]= {0.13, 5}; // amount, time
+		playerKillDecreaseMind[]={0.13, 300}; // amount, time 
+        antidepresantMindInc[] = { 0.5, 0.6, 1 };
         disableLaughterSymptom = 0;
     };
 
@@ -165,15 +167,15 @@ class CfgSyberia
         zombieOpenDoorEnable = 1;
         zombieOpenDoorDistance = 1.8;
         zombieFindHouseDistance = 20.0;
-        zombieBloodHandsChanceOnLooting = 0.25;
-        zombieAttackPlayersInUnconscious = 1;
+        zombieBloodHandsChanceOnLooting = 0.15;
+        zombieAttackPlayersInUnconscious = 0;
         zombieDetectPlayerVisibilityMultiplier = 1;
         zombieDetectPlayerNoiseMultiplier = 1;
     };
     
     class AnimalsSystem
     {
-        animalsButchingKnifeDamage = 100;
+        animalsButchingKnifeDamage = 90;
     };
 
     class IngameSystem
@@ -183,15 +185,15 @@ class CfgSyberia
         gasMaskFilterDegradationInRadZone = -0.2;
         gasMaskFilterDegradationDefault = -0.05;
         igniteFireplaceBaseSkillcheckChance = 0.2;
-        igniteFireplaceIndoorAdditionalChance = 0.3;
-        damageClothingInRadiationZone = 0.0;
-        defaultStaminaDepletionMultiplier = 1.0;
-        defaultStaminaRecoveryMultiplier = 1.0;
-        dirtyFruitsSpawnChance = 0.25;
-        dirtyMushroomsSpawnChance = 0.6;
+        igniteFireplaceIndoorAdditionalChance = 0.6;
+        damageClothingInRadiationZone = 0.05;
+        defaultStaminaDepletionMultiplier = 0.5;
+        defaultStaminaRecoveryMultiplier = 4;
+        dirtyFruitsSpawnChance = 0.20;
+        dirtyMushroomsSpawnChance = 0.2;
     };
 
-    class SkillsExperienceSystem
+    class SkillsExperienceSystem 
     {
         skillsExpImmunityPain = 50;
         skillsExpImmunityHematoma = 10;
@@ -203,14 +205,14 @@ class CfgSyberia
         
         skillsExpAthleticsSprintTime = 60;
         skillsExpAthleticsSprintIncrement = 80;
-        skillsExpAthleticsJogTime = 60;
+        skillsExpAthleticsJogTime = 50;
         skillsExpAthleticsJogIncrement = 15;
         
         skillsExpStrengthLightAttackValue = 30;
         skillsExpStrengthLightAttackChance = 0.3;
         skillsExpStrengthHeavyAttackValue = 50;
         skillsExpStrengthHeavyAttackChance = 0.5;
-        skillsExpStrengthMineWoodOrStone = 5;
+        skillsExpStrengthMineWoodOrStone = 10;
         
         skillsExpMedicineBandage = 50;
         skillsExpMedicineTablets = 20;
@@ -220,16 +222,18 @@ class CfgSyberia
         
         skillsExpStealthSilentAttackValue = 100;
         skillsExpStealthSilentAttackChance = 0.5;
-        skillsExpStealthCrouchTime = 60;
+        skillsExpStealthCrouchTime = 30;
         skillsExpStealthCrouchIncrement = 60;
         
-        skillsExpHuntingButchSmall = 100;
-        skillsExpHuntingButchCommon = 250;
+        skillsExpHuntingButchSmall = 150;
+        skillsExpHuntingButchCommon = 300;
         skillsExpHuntingButchWolf = 500;
         skillsExpHuntingButchBear = 3000;
         
         skillsExpSurvivalIgniteFireSuccess = 500;
         skillsExpSurvivalIgniteFireFailed = 50;
+        skillsExpSurvivalCatchFish = 150;
+        skillsExpSurvivalCraftTool = 100;
     };
     
     class WorldSystem
